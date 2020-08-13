@@ -1,4 +1,3 @@
 NAME=smash
 VERSION=0.0.1
-REPOSITORY=git@github.com:codewell/codewell.git
 MAIN=main
