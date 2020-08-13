@@ -1,3 +1,4 @@
 NAME=smash
 VERSION=0.0.1
 MAIN=main
+DESCRIPTION=Script MAnager for SHell scripts
