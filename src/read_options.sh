@@ -22,6 +22,10 @@ read_options () {
           init
           exit 0
           ;;
+        list)
+          list
+          exit 0
+          ;;
         *)
           help_message
           break
