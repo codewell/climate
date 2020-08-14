@@ -12,23 +12,36 @@ get_package_main () {
   echo "$(get_package_install_path)/${SMASH_MAIN}"
 }
 
-validate_config () {
-  if [ -z "$SMASH_NAME" ]; then
-    echo "Required field NAME is missing in .smash"
-    exit 1
-  fi
-
-  if [ -z "$SMASH_MAIN" ]; then
-    echo "Required field MAIN is missing in .smash"
-    exit 1
+required_field () {
+  if [[ -z $1 ]]; then
+    echo "Required field ${2} is missing in .smash"
+    read -rp "${2}=" value
+    echo "${2}=${value}" >> '.smash'
+    export "SMASH_${2}=${value}"
   fi
 }
 
+recommended_field () {
+  if [[ -z $1 ]]; then
+    echo "Recommended field ${2} is missing in .smash"
+    echo "${2}"
+  fi
+}
+
+validate_config () {
+  required_field "${SMASH_NAME:-}" "NAME"
+  required_field "${SMASH_MAIN:-}" "MAIN"
+  required_field "${SMASH_VERSION:-}" "VERSION"
+  required_field "${SMASH_DESCRIPTION:-}" "DESCRIPTION"
+  recommended_field "${SMASH_REPOSITORY:-}" "REPOSITORY" "smash update will not be available"
+}
+
 read_config () {
-  if [ -f '.smash' ]; then
+  smash_file_path="$(pwd)/.smash"
+  if [ -f "${smash_file_path}" ]; then
     while IFS= read -r line; do
       export "SMASH_${line?}"
-    done < '.smash'
+    done < "${smash_file_path}"
     validate_config
   else
     echo ".smash file is missing"
@@ -48,4 +61,22 @@ get_repository_name () {
   # Trim the .git part
   repository_name=${slug%.*}
   echo "${repository_name}"
+}
+
+get_config_field () {
+  grep "${2}=" < "${HOME}/.smash/${1}/.config" | cut -d= -f2
+}
+
+clone_cli_repository () {
+  ( mkdir -p "${HOME}/.smash/cloned" &&
+    cd "${HOME}/.smash/cloned" &&
+    git clone "${1}" ) || exit
+}
+
+go_to_cloned_repo () {
+  cd "${HOME}/.smash/cloned/${1}" || exit
+}
+
+remove_cloned_script () {
+  rm -rf "${HOME}/.smash/cloned/${1}"
 }

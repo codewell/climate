@@ -26,6 +26,10 @@ read_options () {
           list
           exit 0
           ;;
+        update)
+          update "$@"
+          exit 0
+          ;;
         *)
           help_message
           break

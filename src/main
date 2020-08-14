@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -o errexit -o pipefail -o nounset
+set -x
 
 ##
 #   •••• ••   ••  ••••   •••• ••  ••
@@ -26,10 +27,15 @@ source_files () {
   done
 }
 
+cleanup_main () {
+  echo "Cleaning up!"
+}
 
 main () {
   source_files "${base_dir}"
   read_options "$@"
+  trap cleanup_main EXIT
 }
 
 main "$@"
+

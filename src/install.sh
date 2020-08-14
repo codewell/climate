@@ -23,11 +23,6 @@ set_permissions () {
   chmod +x "$(get_package_main)"
 }
 
-cleanup () {
-  echo "Done"
-}
-
-
 install () {
 
   shift
@@ -57,5 +52,5 @@ install () {
       rm -rf "${repo_name}" )
   fi
 
-  trap cleanup EXIT
+  exit 0
 }
