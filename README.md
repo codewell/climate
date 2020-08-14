@@ -1,54 +1,73 @@
 # SMASH
 
-```
-   •••• ••   ••  ••••   •••• ••  ••
-  •••   • • • • ••  •• •••   ••  ••
-    ••• •• • •• ••••••   ••• ••••••
-  ••••  ••   •• ••  •• ••••  ••  ••
-```
+Assume you wrote a super cool command line interface in let's say bash and want other users to be able to easliy install it to use in their terminal. That is what `smash` is for!
+`smash` is a command line interface manager for shell scripts. Install `smash` and put a `.smash` file in your cli program root to make it easily installabale and updatable via command line.
 
+```
+ •••• ••   ••  ••••   •••• ••  ••
+•••   • • • • ••  •• •••   ••••••
+ •••  •• • •• ••••••   ••• ••••••
+••••  ••   •• ••  •• ••••  ••  ••
 
-**S**cript **MA**nager for **SH**ell
+Script MAnager for SHell scripts
 
-## Basic Usage
-Assume you wrote a super cool command line interface in bash and want other users to be able to easliy install it to use in their terminal. That is what smash is for! Put a `.smash` file in the root directory of your program:
-```bash
-NAME=your_cli
+Available commands
+  help                          Display this message
+  init                          Create .smash file
+  install                       Install a cli
+  install <git-repository-url>  Clone a directory with git and install 
+                                the cli
+  list                          List all installed clis
+  remove <cli-name>             Remove an installed cli
+  update <cli-name>             Update to the latest version of a cli
+                                Requires REPOSITORY field set in .smash
+                                Otherwise use: 
+                                smash install <git-repository-url>
 ```
-Use `smash` to install the cli from its root directory (where `.smash` shold be)
-```bash
-smash install
-```
-to install the cli as `your_cli` to later use it as
-```bash
-your_cli <args>
-```
-
-Whenever you want to uninstall the cli just simply use
-```bash
-smash uninstall
-```
-from the root of the same project.
 
 ## Installation
-Install smash by downloading the smash source code and run
-```bash
-bash src/main
-```
-from root.
+1. Install smash by downloading the smash source code
+2. Run 
+   ```bash
+   bash src/main install
+   ```
+   from root.
+3. Export `${HOME}/.smash/bin` to your path
 
-Export `~/.smash/bin` to your path by adding
-```bash
-export PATH="$HOME/.smash/bin:$PATH"
-```
-to `~/.bash_profile`
+## Basic Usage
+1. Create a command line program
+2. run `smash init` in root to create a `.smash` file
+3. Put your source code in `/src`
+5. run `smash install` to install your cli and make it executable
+6. use `<cli-name> <args>` to use your cli
+  
+## `.smash` file
 
-## CLI Structure
-If you want to create your own cli and make it installable with `smash` there are two requirements:
-1. All the code for the cli should be located in a directory called `src` in the project root.
-2. The root of the project should contain a file `.smash` containing 
-  ```
-  NAME=<cli-name>
-  MAIN=<name-of-main-file>
-  ```
-  run `smash init` to create interactively.
+Run `smash init` to create the `.smash` file interactively
+
+**REQUIRED FIELDS**
+```
+NAME=<cli-name>
+```
+The `NAME` field determines the name of your cli. This is how you later will use it `<cli-name> <args>` from your command line.
+
+```
+MAIN=<name-of-main-file>
+```
+The `MAIN` field is the name of the main script file e.g. `main.sh` or `somethingelse.sh`
+
+```
+VERSION=x.y.z
+```
+The `VERSION` field is to keep track of what version of a cli you use. `smash list` will display the version.
+
+```
+DESCRIPTION=<some-description>
+```
+Short description of the cli. `smash list` will display the description.
+
+**OPTIONAL FIELDS**
+```
+REPOSITORY=<git-repository-url>
+```
+The `REPOSITORY` field is used for updating an installed `cli`. Run `smash update <cli-name>` to clone down the latest code from the cli repository and install it.
