@@ -77,6 +77,6 @@ go_to_cloned_repo () {
   cd "${HOME}/.smash/cloned/${1}" || exit
 }
 
-remove_cloned_script () {
-  rm -rf "${HOME}/.smash/cloned/${1}"
+clear_cloned () {
+  rm -rf "${HOME}"/.smash/cloned/*
 }

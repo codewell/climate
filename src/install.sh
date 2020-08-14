@@ -23,6 +23,10 @@ set_permissions () {
   chmod +x "$(get_package_main)"
 }
 
+cleanup_install () {
+  clear_cloned
+}
+
 install () {
 
   shift
@@ -32,9 +36,9 @@ install () {
   # cloned project assuming it follows
   # the correct smash structure.
   if [ ! $# -eq 0 ]; then
-    git clone "$1" &&
-    repo_name="$(get_repository_name "${1}")" &&
-    cd "${repo_name}" || exit
+    clear_cloned
+    clone_cli_repository "${1}"
+    go_to_cloned_repo "$(get_repository_name "${1}")"
   fi
   
   read_config
@@ -45,12 +49,5 @@ install () {
   write_script_file
   set_permissions
 
-  # If cloned from a repo we should remove
-  # the cloned files after installation
-  if [ ! $# -eq 0 ]; then
-    ( cd .. && 
-      rm -rf "${repo_name}" )
-  fi
-
-  exit 0
+  trap cleanup_install EXIT
 }
