@@ -1,19 +1,19 @@
  •••• ••   ••  ••••   •••• ••  ••
-•••   • • • • ••  •• •••   ••  ••
+•••   • • • • ••  •• •••   ••••••
   ••• •• • •• ••••••   ••• ••••••
 ••••  ••   •• ••  •• ••••  ••  ••
 
 Script MAnager for SHell scripts
 
-Available commands (from a directory containing a .smash file)
-  init       Create .smash file
-  install    Install a cli
-  uninstall  Uninstall a cli
-  update     Update to the latest version of a cli
-
-More commands (from anywhere)
+Available commands
+  help                          Display this message
+  init                          Create .smash file
+  install                       Install a cli
   install <git-repository-url>  Clone a directory with git and install 
-                                the cli. Requires the git repository to
-                                have the correct structure (see readme)
-                                and have a .smash file in root.
-                
+                                the cli
+  list                          List all installed clis
+  remove <cli-name>             Remove an installed cli
+  update <cli-name>             Update to the latest version of a cli
+                                Requires REPOSITORY field set in .smash
+                                Otherwise use: 
+                                smash install <git-repository-url>
