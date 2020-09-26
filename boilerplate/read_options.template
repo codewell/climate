@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+read_options () {
+  if [ $# -eq 0 ]; then
+      help_message
+  else
+    while test $# -gt 0; do
+      case "$1" in
+        help)
+          help_message
+          exit 0
+          ;;
+        foo)
+          echo "This is a dumb command!"
+          exit 0
+          ;;
+        *)
+          help_message
+          break
+          ;;
+      esac
+    done
+  fi
+}

@@ -1,0 +1,5 @@
+Your cli name
+
+Available commands
+  help     Display this message
+  foo      Echo "foo"    

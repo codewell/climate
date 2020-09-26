@@ -12,6 +12,7 @@ Available commands
   install <git-repository-url>  Clone a directory with git and install 
                                 the cli
   list                          List all installed clis
+  new                           Create a cli boilerplate
   remove <cli-name>             Remove an installed cli
   update <cli-name>             Update to the latest version of a cli
                                 Requires REPOSITORY field set in .smash

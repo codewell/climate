@@ -26,6 +26,10 @@ read_options () {
           list
           exit 0
           ;;
+        new)
+          boilerplate "$@"
+          exit 0
+          ;;
         remove)
           remove "$@"
           exit 0
