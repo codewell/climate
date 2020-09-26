@@ -11,7 +11,8 @@ read_options () {
           exit 0
           ;;
         foo)
-          echo "This is a dumb command!"
+          read_args "$@"
+          echo "This is a dumb command! with --bar = ${bar}"
           exit 0
           ;;
         *)
