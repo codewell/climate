@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Not really relative but...
+relative_path () {
+  echo "$(dirname "${BASH_SOURCE[0]}")/${1}"
+}

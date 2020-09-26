@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+read_args () {
+  while test $# -gt 0; do
+    case "$1" in
+      --bar*)
+        export bar="${2}"
+        shift
+        ;;
+      *)
+        shift
+        ;;
+    esac
+  done
+}
