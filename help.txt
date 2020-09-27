@@ -9,12 +9,11 @@ Available commands
   help                          Display this message
   init                          Create .smash file
   install                       Install a cli
-  install <git-repository-url>  Clone a directory with git and install 
-                                the cli
+  install <git-repository-url>  Clone a cli from git and install
   list                          List all installed clis
   new                           Create a cli boilerplate
   remove <cli-name>             Remove an installed cli
   update <cli-name>             Update to the latest version of a cli
                                 Requires REPOSITORY field set in .smash
-                                Otherwise use: 
+                                Otherwise use:
                                 smash install <git-repository-url>

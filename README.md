@@ -15,8 +15,7 @@ Available commands
   help                          Display this message
   init                          Create .smash file
   install                       Install a cli
-  install <git-repository-url>  Clone a directory with git and install
-                                the cli
+  install <git-repository-url>  Clone a cli from git and install
   list                          List all installed clis
   new                           Create a cli boilerplate
   remove <cli-name>             Remove an installed cli
@@ -43,6 +42,19 @@ Available commands
 3. Put your source code in `/src`
 4. run `smash install` to install your cli and make it executable
 5. use `<cli-name> <args>` to use your cli
+
+### Too lazy?
+
+Run
+
+```
+smash new cli-name
+cd cli-name
+smash install
+cli-name foo --bar hello world
+```
+
+to get a basic boilerplate for a cli in bash.
 
 ## `.smash` file
 
@@ -81,3 +93,13 @@ REPOSITORY=<git-repository-url>
 ```
 
 The `REPOSITORY` field is used for updating an installed `cli`. Run `smash update <cli-name>` to clone down the latest code from the cli repository and install it.
+
+**EXAMPLE** `.smash`
+
+```
+NAME=smash
+VERSION=0.1.1
+MAIN=main
+DESCRIPTION=Script MAnager for SHell scripts
+REPOSITORY=git@github.com:fippli/smash.git
+```
