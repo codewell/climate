@@ -6,7 +6,7 @@ remove_old_version () {
 
 create_new_version () {
   mkdir -p "$(get_package_install_path)"
-  cp -r "$(pwd)/" "$(get_package_install_path)"
+  cp -rT "$(pwd)" "$(get_package_install_path)"
   cp "$(pwd)/.smash" "$(get_package_install_path)/.config"
 }
 
