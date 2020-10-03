@@ -31,7 +31,13 @@ install () {
 
   shift
 
-  # If a second argument is passed 
+  # Make sure .smash/bin exists
+  if ! [ -d "${HOME}/.smash/bin" ] ; then
+    echo "Making directory ${HOME}/.smash/bin"
+    mkdir -p "${HOME}/.smash/bin"
+  fi
+
+  # If a second argument is passed
   # clone the url and enter into the
   # cloned project assuming it follows
   # the correct smash structure.
