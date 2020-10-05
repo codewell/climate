@@ -11,9 +11,10 @@ create_new_version () {
   # therefore we need to handle the differences
   # between different platforms
   {
-    cp -rT "$(pwd)" "$(get_package_install_path)"
+    # Supress the output if this does not work.
+    cp --recursive --no-target-directory "$(pwd)" "$(get_package_install_path)" > /dev/null 2>&1
   } || {
-    cp -r "$(pwd)/" "$(get_package_install_path)"
+    cp -R "$(pwd)/" "$(get_package_install_path)"
   }
 
   cp "$(pwd)/.smash" "$(get_package_install_path)/.config"
