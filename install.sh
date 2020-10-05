@@ -21,11 +21,12 @@ create_new_version () {
 }
 
 write_script_file () {
-cat > "$(get_script_install_path)" <<EOF
-#!/usr/bin/env bash
-set -o errexit -o pipefail -o nounset
-$(get_package_main) \$@
-EOF
+# cat > "$(get_script_install_path)" <<EOF
+# #!/usr/bin/env bash
+# set -o errexit -o pipefail -o nounset
+# $(get_package_main) \$@
+# EOF
+ln -s "$(get_package_main)" "$(get_script_install_path)"
 }
 
 set_permissions () {
