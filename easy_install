@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -o errexit -o pipefail -o nounset
+
+git clone https://github.com/fippli/smash.git && \
+  ( cd smash && \
+    bash main install ) && \
+  rm -rf smash && \
+  echo "Export ${HOME}/.smash/bin to your path"
