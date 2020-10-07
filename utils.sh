@@ -24,7 +24,7 @@ required_field () {
 recommended_field () {
   if [[ -z $1 ]]; then
     echo "Recommended field ${2} is missing in .smash"
-    echo "${2}"
+    echo "${3}"
   fi
 }
 
@@ -34,7 +34,7 @@ validate_config () {
   required_field "${SMASH_VERSION:-}" "VERSION"
   required_field "${SMASH_DESCRIPTION:-}" "DESCRIPTION"
   required_field "${SMASH_COMMAND:-}" "COMMAND"
-  recommended_field "${SMASH_REPOSITORY:-}" "REPOSITORY" "smash update will not be available"
+  recommended_field "${SMASH_REPOSITORY:-}" "REPOSITORY" ' - "smash update" will not be available'
 }
 
 read_config () {
