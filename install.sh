@@ -24,7 +24,7 @@ write_script_file () {
 cat > "$(get_script_install_path)" <<EOF
 #!/usr/bin/env bash
 set -o errexit -o pipefail -o nounset
-command -v ${SMASH_COMMAND} $(get_package_main) \$@
+${SMASH_COMMAND} $(get_package_main) \$@
 EOF
 }
 
