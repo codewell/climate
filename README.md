@@ -12,6 +12,7 @@ Assume you wrote a super cool command line interface in let's say bash and want 
     - [Example](#example)
   - [Basic Usage](#basic-usage)
     - [EXAMPLE](#example-1)
+  - [Tutorials](#tutorials)
 
 ## Installation
 
@@ -63,6 +64,13 @@ Available commands
 
 The only thing a project needs to be compatible with `smash` is the `.smash` file. Put `.smash` in the root of your project containing the following `key=value` pairs:
 
+- `COMMAND` What command to start your main file with e.g. `python3` for your `main.py` or `bash` for your `main.sh`.
+
+- `DESCRIPTION` - A short description of the cli. `smash list` will display the description.
+
+- `MAIN` - Path to the main script file relative to project root e.g. `main` or `src/somethingelse.sh`. **NOTE:**
+  All files with file ending `.sh` in the same directory as the main script will be sourced.
+
 - `NAME` - Determines the name of your cli. Your program will be used like
 
   ```
@@ -71,14 +79,9 @@ The only thing a project needs to be compatible with `smash` is the `.smash` fil
 
   from your command line.
 
-- `MAIN` - Path to the main script file relative to project root e.g. `main` or `src/somethingelse.sh`. **NOTE:**
-  All files with file ending `.sh` in the same directory as the main script will be sourced.
+- `REPOSITORY` (optional) - Used for updating an installed `cli`. Run `smash update <cli-name>` to clone down the latest code from the cli repository and install it.
 
 - `VERSION` - Used to keep track of what version of a cli you use. `smash list` will display the version.
-
-- `DESCRIPTION` - A short description of the cli. `smash list` will display the description.
-
-- `REPOSITORY` (optional) - Used for updating an installed `cli`. Run `smash update <cli-name>` to clone down the latest code from the cli repository and install it.
 
 ### Example
 
@@ -88,6 +91,7 @@ VERSION=0.1.1
 MAIN=main
 DESCRIPTION=Script MAnager for SHell scripts
 REPOSITORY=https://github.com/fippli/smash.git
+COMMAND=bash
 ```
 
 You can also create `.smash` interactively with `smash init` form the root directory of your project. `smash new` will create a cli boilerplate including a `.smash` file.
@@ -107,3 +111,7 @@ cd <cli-name>
 smash install
 <cli-name> foo --bar hello world
 ```
+
+## [Tutorials](https://github.com/fippli/smash/wiki/Tutorials)
+
+See the [wiki page for tutorials](https://github.com/fippli/smash/wiki/Tutorials)
