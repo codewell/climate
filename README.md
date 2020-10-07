@@ -112,6 +112,6 @@ smash install
 <cli-name> foo --bar hello world
 ```
 
-## [Tutorials](https://github.com/fippli/smash/wiki/Tutorials)
+## [Tutorials](https://github.com/fippli/smash/wiki#tutorials)
 
-See the [wiki page for tutorials](https://github.com/fippli/smash/wiki/Tutorials)
+See the [wiki page for tutorials](https://github.com/fippli/smash/wiki#tutorials)
