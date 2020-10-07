@@ -33,6 +33,7 @@ validate_config () {
   required_field "${SMASH_MAIN:-}" "MAIN"
   required_field "${SMASH_VERSION:-}" "VERSION"
   required_field "${SMASH_DESCRIPTION:-}" "DESCRIPTION"
+  required_field "${SMASH_COMMAND:-}" "COMMAND"
   recommended_field "${SMASH_REPOSITORY:-}" "REPOSITORY" "smash update will not be available"
 }
 

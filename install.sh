@@ -20,8 +20,12 @@ create_new_version () {
   cp "$(pwd)/.smash" "$(get_package_install_path)/.config"
 }
 
-link_package () {
-  ln -s "$(get_package_main)" "$(get_script_install_path)"
+write_script_file () {
+cat > "$(get_script_install_path)" <<EOF
+#!/usr/bin/env bash
+set -o errexit -o pipefail -o nounset
+command -v ${SMASH_COMMAND} $(get_package_main) \$@
+EOF
 }
 
 set_permissions () {
@@ -58,7 +62,7 @@ install () {
 
   remove_old_version
   create_new_version
-  link_package
+  write_script_file
   set_permissions
 
   trap cleanup_install EXIT
