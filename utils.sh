@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 get_script_install_path () {
-  echo "${HOME}/.smash/bin/${SMASH_NAME}"
+  echo "${HOME}/.climate/bin/${SMASH_NAME}"
 }
 
 get_package_install_path () {
-  echo "${HOME}/.smash/${SMASH_NAME}"
+  echo "${HOME}/.climate/${SMASH_NAME}"
 }
 
 get_package_main () {
@@ -14,16 +14,16 @@ get_package_main () {
 
 required_field () {
   if [[ -z $1 ]]; then
-    echo "Required field ${2} is missing in .smash"
+    echo "Required field ${2} is missing in .climate"
     read -rp "${2}=" value
-    echo "${2}=${value}" >> '.smash'
+    echo "${2}=${value}" >> '.climate'
     export "SMASH_${2}=${value}"
   fi
 }
 
 recommended_field () {
   if [[ -z $1 ]]; then
-    echo "Recommended field ${2} is missing in .smash"
+    echo "Recommended field ${2} is missing in .climate"
     echo "${3}"
   fi
 }
@@ -38,14 +38,14 @@ validate_config () {
 }
 
 read_config () {
-  smash_file_path="$(pwd)/.smash"
+  smash_file_path="$(pwd)/.climate"
   if [ -f "${smash_file_path}" ]; then
     while IFS= read -r line; do
       export "SMASH_${line?}"
     done < "${smash_file_path}"
     validate_config
   else
-    echo ".smash file is missing"
+    echo ".climate file is missing"
     exit 1
   fi
 }
@@ -65,19 +65,19 @@ get_repository_name () {
 }
 
 get_config_field () {
-  grep "${2}=" < "${HOME}/.smash/${1}/.config" | cut -d= -f2
+  grep "${2}=" < "${HOME}/.climate/${1}/.config" | cut -d= -f2
 }
 
 clone_cli_repository () {
-  ( mkdir -p "${HOME}/.smash/cloned" &&
-    cd "${HOME}/.smash/cloned" &&
+  ( mkdir -p "${HOME}/.climate/cloned" &&
+    cd "${HOME}/.climate/cloned" &&
     git clone "${1}" ) || exit
 }
 
 go_to_cloned_repo () {
-  cd "${HOME}/.smash/cloned/${1}" || exit
+  cd "${HOME}/.climate/cloned/${1}" || exit
 }
 
 clear_cloned () {
-  rm -rf "${HOME}"/.smash/cloned/*
+  rm -rf "${HOME}"/.climate/cloned/*
 }

@@ -14,6 +14,6 @@ init () {
     echo "REPOSITORY=${repository}";
     echo "MAIN=${main}"; 
     echo "COMMAND=${start_command}"; 
-    } > "$(pwd)/.smash"
+    } > "$(pwd)/.climate"
 }
 

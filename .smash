@@ -1,6 +1,0 @@
-NAME=smash
-VERSION=0.1.4
-MAIN=main
-DESCRIPTION=Script MAnager for SHell scripts
-REPOSITORY=git@github.com:fippli/smash.git
-COMMAND=bash
