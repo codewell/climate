@@ -1,19 +1,15 @@
- •••• ••   ••  ••••   •••• ••  ••
-•••   • • • • ••  •• •••   ••••••
-  ••• •• • •• ••••••   ••• ••••••
-••••  ••   •• ••  •• ••••  ••  ••
-
-Script MAnager for SHell scripts
+CLIMATE
+The friendly command line interface manager
 
 Available commands
   help                          Display this message
-  init                          Interactively create .smash file
+  init                          Interactively create .climate file
   install                       Install a cli
   install <git-repository-url>  Clone a cli from git and install
   list                          List all installed clis
-  new                           Create a cli boilerplate
-  remove <cli-name>             Remove an installed cli
-  update <cli-name>             Update to the latest version of a cli
-                                Requires REPOSITORY field set in .smash
+  new     <cli-name>            Create a cli boilerplate
+  remove  <cli-name>            Remove an installed cli
+  update  <cli-name>            Update to the latest version of a cli
+                                Requires REPOSITORY field set in .climate
                                 Otherwise use:
-                                smash install <git-repository-url>
+                                climate install <git-repository-url>

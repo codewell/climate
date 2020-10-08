@@ -5,4 +5,4 @@ git clone https://github.com/fippli/smash.git && \
   ( cd smash && \
     bash main install ) && \
   rm -rf smash && \
-  echo "Export ${HOME}/.smash/bin to your path"
+  echo "Export ${HOME}/.climate/bin to your path"

@@ -1,0 +1,6 @@
+NAME=climate
+VERSION=0.1.5
+MAIN=main
+DESCRIPTION=CLI Manager
+REPOSITORY=git@github.com:fippli/smash.git
+COMMAND=bash

@@ -8,7 +8,7 @@ get_description () {
 
 # List all installded scripts
 list () {
-  for cli in "${HOME}"/.smash/bin/*; do
+  for cli in "${HOME}"/.climate/bin/*; do
     cli_name="$(basename "${cli}")"
     basename "${cli_name} $(get_description "${cli_name}")"
   done

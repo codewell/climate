@@ -14,7 +14,7 @@ create_template () {
 }
 
 create_smash_file () {
-cat > "$(pwd)/${project_name}/.smash" <<EOF
+cat > "$(pwd)/${project_name}/.climate" <<EOF
 NAME=${project_name}
 VERSION=0.1.0
 REPOSITORY=

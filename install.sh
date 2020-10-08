@@ -17,7 +17,7 @@ create_new_version () {
     cp -R "$(pwd)/" "$(get_package_install_path)"
   }
 
-  cp "$(pwd)/.smash" "$(get_package_install_path)/.config"
+  cp "$(pwd)/.climate" "$(get_package_install_path)/.config"
 }
 
 write_script_file () {
@@ -41,10 +41,10 @@ install () {
 
   shift
 
-  # Make sure .smash/bin exists
-  if ! [ -d "${HOME}/.smash/bin" ] ; then
-    echo "Making directory ${HOME}/.smash/bin"
-    mkdir -p "${HOME}/.smash/bin"
+  # Make sure .climate/bin exists
+  if ! [ -d "${HOME}/.climate/bin" ] ; then
+    echo "Making directory ${HOME}/.climate/bin"
+    mkdir -p "${HOME}/.climate/bin"
   fi
 
   # If a second argument is passed
