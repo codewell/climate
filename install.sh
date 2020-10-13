@@ -24,13 +24,15 @@ write_script_file () {
 cat > "$(get_script_install_path)" <<EOF
 #!/usr/bin/env bash
 set -o errexit -o pipefail -o nounset
-${SMASH_COMMAND} $(get_package_main) \$@
+exec $(get_package_main) \$@
 EOF
+  chmod +x "$(get_script_install_path)"
 }
 
 set_permissions () {
-  chmod +x "$(get_script_install_path)"
-  chmod +x "$(get_package_main)"
+	if ! [ -x "$(get_package_main)" ]; then
+		echo "WARNING: "$(get_package_main)" is not executable."
+	fi
 }
 
 cleanup_install () {
