@@ -117,35 +117,41 @@ climate install
 ```
 
 ## Tutorial
+1. Create a directory where you will put all your code and navigate to it e.g.
+   ```
+   mkdir my-code && cd my-code
+   ```
 
-Create a script you wish to run from your terminal in let's say JavaScript. Put your code in a file `index.js` containing:
+2. Create a script you wish to run from your terminal in let's say JavaScript. Put your code in a file `index.js` containing:
+   ```JavaScript
+   #!/usr/bin/env node
+   console.log("I like the climate script since is works with JavaScript!");
+   ```
 
-```JavaScript
-#!/usr/env/bin node
+3. Make your script executable with
+   ```
+   chmod +x index.js
+   ```
 
-console.log("I like the climate script since is works with JavaScript!");
-```
+4. Run `climate init` to create a .climate file:
+   ```
+   NAME=my-js-cli
+   MAIN=index.js
+   DESCRIPTION=My cool js script
+   VERSION=0.0.1
+   REPOSITORY=
+   ```
 
-Put it in a directory called `js-program-or-whatever` and navigate to that directory. Run `climate init` to create a .climate file:
-```
-NAME=my-js-cli
-MAIN=index.js
-DESCRIPTION=My cool js script
-VERSION=0.0.1
-REPOSITORY=
-```
+5. Run 
+   ```
+   climate install
+   ```
 
-Make sure `index.js` is executable by running `chmod +x index.js` before installing.
-
-Run 
-```
-climate install
-``` 
-and you will be able to run your script like 
-```
-my-js-cli
-> I like the climate script since is works with JavaScript!
-```
+6. Run your script like 
+   ```
+   my-js-cli
+   > I like the climate script since is works with JavaScript!
+   ```
 
 ### Shebang
 Your script is run with the `exec` command which interprets the [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) of the main file. Therefore, do not forget to put the shebang in your main script file.
