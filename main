@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 set -o errexit -o pipefail -o nounset
 
-##
-# Script MAnager for SHell scripts
-# Main script
-##
-
 main_script_path=${BASH_SOURCE[0]}
 base_dir="$(dirname "${main_script_path}")"
+package_name="climate"
+package_base="${HOME}/.${package_name}"
+package_bin="${package_base}/bin"
+package_cloned="${package_base}/cloned"
+config_file_path="$(pwd)/.${package_name}"
 
 source_files () {
   for src in "${base_dir}/"*.sh; do

@@ -11,12 +11,12 @@ remove () {
   if [ ! $# -eq 2 ]; then
     echo "We need to know the name of the package!"
     echo "Usage:"
-    echo "smash remove <cli-name>"
+    echo "climate remove <cli-name>"
     exit 1
   fi
 
-  export SMASH_NAME="${2}"
-  echo "Removing ${SMASH_NAME} cli"
-  remove_files "${SMASH_NAME}"
-  trap 'echo ${SMASH_NAME} removed' EXIT
+  export CONFIG_NAME="${2}"
+  echo "Removing ${CONFIG_NAME} cli"
+  remove_files "${CONFIG_NAME}"
+  trap 'echo ${CONFIG_NAME} removed' EXIT
 }

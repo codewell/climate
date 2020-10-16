@@ -17,7 +17,7 @@ create_new_version () {
     cp -R "$(pwd)/" "$(get_package_install_path)"
   }
 
-  cp "$(pwd)/.climate" "$(get_package_install_path)/.config"
+  cp "${config_file_path}" "$(get_package_install_path)/.config"
 }
 
 write_script_file () {
@@ -29,9 +29,9 @@ EOF
   chmod +x "$(get_script_install_path)"
 }
 
-set_permissions () {
+check_permissions () {
 	if ! [ -x "$(get_package_main)" ]; then
-		echo "WARNING: "$(get_package_main)" is not executable."
+		echo "WARNING: $(get_package_main) is not executable."
 	fi
 }
 
@@ -43,16 +43,15 @@ install () {
 
   shift
 
-  # Make sure .climate/bin exists
-  if ! [ -d "${HOME}/.climate/bin" ] ; then
-    echo "Making directory ${HOME}/.climate/bin"
-    mkdir -p "${HOME}/.climate/bin"
+  if ! [ -d "${package_bin}" ] ; then
+    echo "Making directory ${package_bin}"
+    mkdir -p "${package_bin}"
   fi
 
   # If a second argument is passed
   # clone the url and enter into the
   # cloned project assuming it follows
-  # the correct smash structure.
+  # the correct climate structure.
   if [ ! $# -eq 0 ]; then
     clear_cloned
     clone_cli_repository "${1}"
@@ -60,12 +59,12 @@ install () {
   fi
   
   read_config
-  echo "Installing ${SMASH_NAME} cli to $(get_script_install_path)"
+  echo "Installing ${CONFIG_NAME} cli to $(get_script_install_path)"
 
   remove_old_version
   create_new_version
   write_script_file
-  set_permissions
+  check_permissions
 
   trap cleanup_install EXIT
 }

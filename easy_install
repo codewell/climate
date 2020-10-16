@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -o errexit -o pipefail -o nounset
 
-git clone https://github.com/fippli/smash.git && \
-  ( cd smash && \
+git clone https://github.com/fippli/climate.git && \
+  ( cd climate && \
     bash main install ) && \
-  rm -rf smash && \
-  echo "Export ${HOME}/.climate/bin to your path"
+  rm -rf climate && \
+  echo "Export ${package_bin} to your path"

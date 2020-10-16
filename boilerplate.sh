@@ -13,22 +13,22 @@ create_template () {
   cat "$(get_template_path "${1}")" > "$(project_file_path "${2}")"
 }
 
-create_smash_file () {
-cat > "$(pwd)/${project_name}/.climate" <<EOF
+create_climate_file () {
+cat > "$(pwd)/${project_name}/.${package_name}" <<EOF
 NAME=${project_name}
 VERSION=0.1.0
 REPOSITORY=
 MAIN=main
-DESCRIPTION=New SMASH project
+DESCRIPTION=New ${package_name} project
 EOF
 }
 
 boilerplate () {
   # Create a new diretory
-  project_name="${2:-"new-smash-cli"}"
+  project_name="${2:-"new-climate-cli"}"
   mkdir "$(pwd)/${project_name}"
   
-  create_smash_file
+  create_climate_file
   create_template "main.template" "main"
   create_template "help_message.template" "help_message.sh"
   create_template "help.txt.template" "help.txt"
