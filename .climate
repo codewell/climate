@@ -1,5 +1,5 @@
 NAME=climate
-VERSION=0.1.5
+VERSION=0.1.6
 MAIN=main
 DESCRIPTION=CLI Manager
 REPOSITORY=git@github.com:fippli/climate.git

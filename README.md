@@ -12,12 +12,23 @@ Assume you wrote a super cool command line interface in let's say bash and want 
     - [Example](#example)
   - [Basic Usage](#basic-usage)
     - [EXAMPLE](#example-1)
-  - [Tutorials](#tutorials)
+  - [Tutorial](#tutorial)
+    - [Shebang](#shebang)
 
 ## Installation
 
 Export `${HOME}/.climate/bin` to your path and run the following commands
 
+**bash**
+```
+echo "export PATH=\${HOME}/.climate/bin:\$PATH" >> ${HOME}/.bash_profile
+```
+**fish**
+```
+echo "set  PATH ~/.climate/bin \$PATH" >> ~/.config/fish/config.fish
+```
+
+Then get the source and run the install script
 ```
 git clone https://github.com/fippli/climate.git
 cd climate
@@ -60,8 +71,6 @@ Available commands
 
 The only thing a project needs to be compatible with `climate` is the `.climate` file. Put `.climate` in the root of your project containing the following `key=value` pairs:
 
-- `COMMAND` What command to start your main file with e.g. `python3` for your `main.py` or `bash` for your `main.sh`.
-
 - `DESCRIPTION` - A short description of the cli. `climate list` will display the description.
 
 - `MAIN` - Path to the main script file relative to project root e.g. `main` or `src/somethingelse.sh`. **NOTE:**
@@ -87,7 +96,6 @@ VERSION=0.1.1
 MAIN=main
 DESCRIPTION=Script MAnager for SHell scripts
 REPOSITORY=https://github.com/fippli/climate.git
-COMMAND=bash
 ```
 
 You can also create `.climate` interactively with `climate init` form the root directory of your project. `climate new` will create a cli boilerplate including a `.climate` file.
@@ -108,6 +116,36 @@ climate install
 <cli-name> foo --bar hello world
 ```
 
-## [Tutorials](https://github.com/fippli/climate/wiki#tutorials)
+## Tutorial
 
-See the [wiki page for tutorials](https://github.com/fippli/climate/wiki#tutorials)
+Create a script you wish to run from your terminal in let's say JavaScript. Put your code in a file `index.js` containing:
+
+```JavaScript
+#!/usr/env/bin node
+
+console.log("I like the climate script since is works with JavaScript!");
+```
+
+Put it in a directory called `js-program-or-whatever` and navigate to that directory. Run `climate init` to create a .climate file:
+```
+NAME=my-js-cli
+MAIN=index.js
+DESCRIPTION=My cool js script
+VERSION=0.0.1
+REPOSITORY=
+```
+
+Make sure `index.js` is executable by running `chmod +x index.js` before installing.
+
+Run 
+```
+climate install
+``` 
+and you will be able to run your script like 
+```
+my-js-cli
+> I like the climate script since is works with JavaScript!
+```
+
+### Shebang
+Your script is run with the `exec` command which interprets the [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) of the main file. Therefore, do not forget to put the shebang in your main script file.
