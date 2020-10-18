@@ -7,7 +7,6 @@ Available commands
   install                       Install a script from its source
   install <git-repository-url>  Clone a script from a git repository and install
   list                          List all installed scripts
-  new     <script-name>         Create a sccript boilerplate
   remove  <script-name>         Remove an installed script
   update  <script-name>         Update to the latest version of a script
                                 Requires REPOSITORY field set in .climate
