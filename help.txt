@@ -1,5 +1,5 @@
 CLIMATE
-The minimalistic script manager
+The minimalistic package manager for scripts
 
 Available commands
   help                          Display this message

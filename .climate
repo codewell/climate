@@ -1,5 +1,5 @@
 NAME=climate
-VERSION=0.1.6
+VERSION=0.1.7
+DESCRIPTION=The minimalistic package manager for scripts
 MAIN=main
-DESCRIPTION=CLI Manager
 REPOSITORY=git@github.com:fippli/climate.git
