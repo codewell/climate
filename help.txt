@@ -1,15 +1,15 @@
 CLIMATE
-The friendly command line interface manager
+The minimalistic script manager
 
 Available commands
   help                          Display this message
   init                          Interactively create .climate file
-  install                       Install a cli
-  install <git-repository-url>  Clone a cli from git and install
-  list                          List all installed clis
-  new     <cli-name>            Create a cli boilerplate
-  remove  <cli-name>            Remove an installed cli
-  update  <cli-name>            Update to the latest version of a cli
+  install                       Install a script from its source
+  install <git-repository-url>  Clone a script from a git repository and install
+  list                          List all installed scripts
+  new     <script-name>         Create a sccript boilerplate
+  remove  <script-name>         Remove an installed script
+  update  <script-name>         Update to the latest version of a script
                                 Requires REPOSITORY field set in .climate
                                 Otherwise use:
                                 climate install <git-repository-url>
