@@ -2,4 +2,4 @@ NAME=climate
 VERSION=0.2.0
 DESCRIPTION=The minimalistic package manager for scripts
 MAIN=main
-REPOSITORY=git@github.com:fippli/climate.git
+REPOSITORY=git@github.com:codewell/climate.git

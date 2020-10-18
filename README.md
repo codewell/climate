@@ -17,7 +17,7 @@ Assume you wrote a super cool script in let's say bash and want other users to b
 
 The easiest way to install is to run this script
 ```
-bash <(curl -s https://raw.githubusercontent.com/fippli/climate/master/easy_install)
+bash <(curl -s https://raw.githubusercontent.com/codewell/climate/master/easy_install)
 ```
 and export `${HOME}/.climate/bin` to your `PATH`.
 
