@@ -83,10 +83,10 @@ The only thing a project needs to be compatible with `climate` is the `.climate`
 
 ```
 NAME=climate
-VERSION=0.1.1
+VERSION=0.1.7
+DESCRIPTION=The minimalistic package manager for scripts
 MAIN=main
-DESCRIPTION=Script MAnager for SHell scripts
-REPOSITORY=https://github.com/fippli/climate.git
+REPOSITORY=git@github.com:fippli/climate.git
 ```
 
 You can also create `.climate` interactively with `climate init` from the root directory of your project.
