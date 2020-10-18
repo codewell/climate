@@ -15,7 +15,13 @@ Assume you wrote a super cool script in let's say bash and want other users to b
 
 ## Installation
 
-Export `${HOME}/.climate/bin` to your path and run the following commands
+The easiest way to install is to run this script
+```
+bash <(curl -s https://raw.githubusercontent.com/fippli/climate/master/easy_install)
+```
+and export `${HOME}/.climate/bin` to your `PATH`.
+
+Depending on which shell you use you can run one of these scripts to permanently export `${HOME}/.climate/bin` to your `PATH`:
 
 **bash**
 ```
@@ -23,20 +29,7 @@ echo "export PATH=\${HOME}/.climate/bin:\$PATH" >> ${HOME}/.bash_profile
 ```
 **fish**
 ```
-echo "set  PATH ~/.climate/bin \$PATH" >> ~/.config/fish/config.fish
-```
-
-Then get the source and run the install script
-```
-git clone https://github.com/fippli/climate.git
-cd climate
-bash main install
-```
-
-or run this convenience script if you dare
-
-```
-bash <(curl -s https://raw.githubusercontent.com/fippli/climate/master/easy_install)
+echo "set PATH ~/.climate/bin \$PATH" >> ~/.config/fish/config.fish
 ```
 
 Then run
@@ -146,3 +139,11 @@ You can also create `.climate` interactively with `climate init` from the root d
 
 ### Shebang
 Your script is run with the `exec` command which interprets the [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) of the main file. Therefore, do not forget to put the shebang in your main script file.
+
+Language | Shebang
+---------|--------
+shell | #!/usr/bin/env sh
+bash | #!/usr/bin/env bash
+node | #!/usr/bin/env node
+python 2 | #!/usr/bin/env python2
+python 3 | #!/usr/bin/env python 3
