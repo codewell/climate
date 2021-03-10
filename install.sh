@@ -34,7 +34,6 @@ check_permissions () {
 }
 
 cleanup_install () {
-  # TODO
   clear_clones
   echo "Done"
 }
