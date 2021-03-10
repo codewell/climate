@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -o errexit -o pipefail -o nounset
-set -x
 
 git clone https://github.com/codewell/climate.git && \
   ( cd climate && \
