@@ -1,5 +1,5 @@
 NAME=climate
-VERSION=0.2.0
+VERSION=0.3.0
 DESCRIPTION=The minimalistic package manager for scripts
 MAIN=main
 REPOSITORY=git@github.com:codewell/climate.git

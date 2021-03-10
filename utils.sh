@@ -5,7 +5,7 @@ get_script_install_path () {
 }
 
 get_package_install_path () {
-  echo "${package_base}/${CONFIG_NAME}"
+  echo "${package_install_path}/${CONFIG_NAME}"
 }
 
 get_package_main () {
@@ -36,11 +36,15 @@ validate_config () {
   recommended_field "${CONFIG_REPOSITORY:-}" "REPOSITORY" " - \"${package_name} update\" will not be available"
 }
 
+get_config_file_path () {
+  echo "$(pwd)/.${package_name}"
+}
+
 read_config () {
-  if [ -f "${config_file_path}" ]; then
+  if [ -f "$(get_config_file_path)" ]; then
     while IFS= read -r line; do
       export "CONFIG_${line?}"
-    done < "${config_file_path}"
+    done < "$(get_config_file_path)"
     validate_config
   else
     echo ".${package_name} file is missing"
@@ -63,19 +67,18 @@ get_repository_name () {
 }
 
 get_config_field () {
-  grep "${2}=" < "${package_base}/${1}/.config" | cut -d= -f2
+  grep "${2}=" < "${package_base}/packages/${1}/.${package_name}" | cut -d= -f2
 }
 
 clone_cli_repository () {
-  ( mkdir -p "${package_cloned}" &&
-    cd "${package_cloned}" &&
+  ( cd "${package_clones_path}" &&
     git clone "${1}" ) || exit
 }
 
 go_to_cloned_repo () {
-  cd "${package_cloned}/${1}" || exit
+  cd "${package_clones_path}/${1}" || exit
 }
 
-clear_cloned () {
-  rm -rf "${package_cloned:?}"/*
+clear_clones () {
+  rm -rf "${package_clones_path:?}"/*
 }
