@@ -42,8 +42,6 @@ cleanup_install () {
 install () {
   shift
 
-  set -x
-
   if ! [ -d "${package_bin}" ] ; then
     echo "Making directory ${package_bin}"
     mkdir -p "${package_bin}"
@@ -80,6 +78,4 @@ install () {
   check_permissions
 
   trap cleanup_install EXIT
-  
-  set +x
 }
