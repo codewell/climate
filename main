@@ -6,7 +6,8 @@ base_dir="$(dirname "${main_script_path}")"
 package_name="climate"
 package_base="${HOME}/.${package_name}"
 package_bin="${package_base}/bin"
-package_cloned="${package_base}/cloned"
+package_clones_path="${package_base}/clones"
+package_install_path="${package_base}/packages"
 config_file_path="$(pwd)/.${package_name}"
 
 source_files () {
