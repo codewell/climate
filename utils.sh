@@ -80,5 +80,7 @@ go_to_cloned_repo () {
 }
 
 clear_clones () {
-  rm -rf "${package_clones_path:?}"/*
+  if [ -n "${package_clones_path}" ]; then
+    rm -rf "${package_clones_path:?}"/*
+  fi
 }
