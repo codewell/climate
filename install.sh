@@ -65,8 +65,6 @@ install () {
     clear_clones
     clone_cli_repository "${1}"
     go_to_cloned_repo "$(get_repository_name "${1}")"
-    pwd
-    ls
   fi
   
   read_config
