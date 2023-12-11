@@ -10,6 +10,10 @@ read_options () {
   else
     while test $# -gt 0; do
       case "$1" in
+        create)
+          create "$@"
+          exit 0
+          ;;
         help)
           help_message
           exit 0
