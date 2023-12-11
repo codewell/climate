@@ -2,6 +2,7 @@ CLIMATE
 The minimalistic package manager for scripts
 
 Available commands
+  create                        Create a script boilerplate
   help                          Display this message
   init                          Interactively create .climate file
   install                       Install a script from its source
